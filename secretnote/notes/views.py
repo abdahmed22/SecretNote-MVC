@@ -10,7 +10,7 @@ from django.http import HttpResponseRedirect
 class NotesListView(LoginRequiredMixin, ListView):
     model = Note
     context_object_name = "notes"
-    login_url = "/admin"
+    login_url = "/login"
     
     def get_queryset(self):
         return self.request.user.notes.all()
@@ -19,7 +19,7 @@ class NotesListView(LoginRequiredMixin, ListView):
 class NotesDetailsView(LoginRequiredMixin, DetailView):
     model = Note
     context_object_name = "note"
-    login_url = "/admin"
+    login_url = "/login"
     
     def get_queryset(self):
         return self.request.user.notes.all()
@@ -29,7 +29,7 @@ class NotesCreateView(LoginRequiredMixin, CreateView):
     model = Note
     success_url = '/secret/notes/'
     form_class = NoteForm
-    login_url = "/admin"
+    login_url = "/login"
     
     def form_valid(self, form):
         self.object = form.save(commit=False)
@@ -43,7 +43,7 @@ class NotesUpdateView(LoginRequiredMixin, UpdateView):
     model = Note
     success_url = '/secret/notes/'
     form_class = NoteForm
-    login_url = "/admin"
+    login_url = "/login"
     
     def get_queryset(self):
         return self.request.user.notes.all()
@@ -52,7 +52,7 @@ class NotesDeleteView(LoginRequiredMixin, DeleteView):
     model = Note
     success_url = '/secret/notes/'
     template_name = 'notes/note_delete.html'
-    login_url = "/admin"
+    login_url = "/login"
     
     def get_queryset(self):
         return self.request.user.notes.all()
