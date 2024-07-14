@@ -5,13 +5,13 @@
 
 <div class="row justify-content-center">
     <div class="col-md-6">
-        <form action="" method="post">
-            {% csrf_token %}
+        <form action="{% url 'postlogout' %}" method="post">
             <div class="card mt-5">
                 <div class="card-header">Thanks for using Secret Notes !!</div>
-                <div class="card-footer">
-                    <input type="submit" class="btn btn-sm btn-danger" value="Yes">
-                    <a href="{% url 'home' %}" class="btn btn-success btn-sm">No</a>
+                <div class="card-body">
+                    {% csrf_token %}
+                    <input type="submit" class="btn btn-sm btn-danger" value="Logout">
+                    <a href="{% url 'home' %}" class="btn btn-success btn-sm">Back</a>
                 </div>
             </div>
         </form>
