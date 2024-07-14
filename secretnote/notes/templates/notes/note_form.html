@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% load static %}
+  
+{% block content %}
+
+<div class="row justify-content-center">
+    <div class="col-md-8 mb-3">
+        <div class="card mt-5">
+            <div class="card-header">
+                Note Contents:
+            </div>
+            <div class="card-body">
+                <form action="" method="post">
+                    {% csrf_token %}
+                    {{form}}
+                    <button type="submit" class="btn btn-sm btn-success">Submit</button>
+                </form>
+        
+                {% if form.errors %}
+                    <div class="alert alert-danger">
+                        {{form.errors}}
+                    </div>
+                {% endif %}
+            </div>
+            <div class="card-footer">
+                <a href="{% url 'home' %}" class="btn btn-success btn-sm">Back</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock content %}
