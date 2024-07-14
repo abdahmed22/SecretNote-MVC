@@ -21,8 +21,6 @@ class NotesDetailsView(LoginRequiredMixin, DetailView):
     context_object_name = "note"
     login_url = "/login"
     
-    def get_queryset(self):
-        return self.request.user.notes.all()
 
 
 class NotesCreateView(LoginRequiredMixin, CreateView):
