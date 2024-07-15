@@ -6,6 +6,10 @@ from .models import Note
 from .forms import NoteForm
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.http import HttpResponseRedirect
+from cryptography.fernet import Fernet
+from django.conf import settings
+
+f = Fernet(settings.ENCRYPTION_KEY)
 
 class NotesListView(LoginRequiredMixin, ListView):
     model = Note
@@ -30,7 +34,24 @@ class NotesCreateView(LoginRequiredMixin, CreateView):
     login_url = "/login"
     
     def form_valid(self, form):
-        self.object = form.save(commit=False)
+        note = form.save(commit=False)
+        
+        title = form.cleaned_data['title']
+        text = form.cleaned_data['text']
+        
+        title_bytes = title.encode('utf-8')
+        text_bytes = text.encode('utf-8')
+        
+        title_encrypted = f.encrypt(title_bytes)
+        text_encrypted = f.encrypt(text_bytes)
+        
+        title_decoded = title_encrypted.decode('utf-8')
+        text_decoded = text_encrypted.decode('utf-8')
+        
+        note.title = title_decoded
+        note.text = text_decoded
+        
+        self.object = note
         self.object.user = self.request.user
         self.object.save()
         
