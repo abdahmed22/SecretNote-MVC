@@ -9,3 +9,5 @@ run_sever: install_requirements
 build_image:
 	docker build --tag=buildme-secretnote:v3.0
 
+run_container:
+	docker compose up

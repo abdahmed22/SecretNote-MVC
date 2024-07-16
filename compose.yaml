@@ -1,0 +1,5 @@
+services:
+  secretnote:
+    image: buildme-secretnote:v3.0
+    ports:
+      - "8000:8000"
