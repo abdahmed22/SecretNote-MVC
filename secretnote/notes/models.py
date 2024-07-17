@@ -29,4 +29,7 @@ class Note(models.Model):
     
     @property
     def is_deleted(self):
-        return timezone.now() > self.destruction_date
+        is_deleted = timezone.now() > self.destruction_date
+        if is_deleted:
+            self.delete()
+        return is_deleted
