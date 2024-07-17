@@ -13,12 +13,12 @@
                     {% for note in notes %}
                         <div class="col-md-4">
                             <div class="card mb-5">
-                                <div class="card-header">{{note.title}}</div>
+                                <div class="card-header">{{note.title_decrypted}}</div>
                                 <div class="card-body">
-                                    <p>{{note.text|truncatechars:30}}</p>
+                                    <p>{{note.text_decrypted|truncatechars:30}}</p>
                                 </div>
                                 <div class="card-footer">
-                                    <a href="{% url 'notes.detail' pk=note.id %}" class="btn btn-success btn-sm">View</a>
+                                    <a href="{% url 'notes.detail' pk=note.secret %}" class="btn btn-success btn-sm">View</a>
                                 </div>
                             </div>
                         </div>

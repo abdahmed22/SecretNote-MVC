@@ -38,21 +38,27 @@ class NotesCreateView(LoginRequiredMixin, CreateView):
         
         title = form.cleaned_data['title']
         text = form.cleaned_data['text']
+        secret = form.cleaned_data['secret']
         
         title_bytes = title.encode('utf-8')
         text_bytes = text.encode('utf-8')
+        secret_bytes = secret.encode('utf-8')
         
         title_encrypted = f.encrypt(title_bytes)
         text_encrypted = f.encrypt(text_bytes)
+        secret_encrypted = f.encrypt(secret_bytes)
         
         title_decoded = title_encrypted.decode('utf-8')
         text_decoded = text_encrypted.decode('utf-8')
+        secret_decoded = secret_encrypted.decode('utf-8')
         
         note.title = title_decoded
         note.text = text_decoded
+        note.secret = secret_decoded
         
         self.object = note
         self.object.user = self.request.user
+
         self.object.save()
         
         return HttpResponseRedirect(self.get_success_url())
