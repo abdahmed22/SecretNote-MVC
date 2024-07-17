@@ -25,8 +25,6 @@ class NotesDetailsView(LoginRequiredMixin, DetailView):
     context_object_name = "note"
     login_url = "/login"
     
-
-
 class NotesCreateView(LoginRequiredMixin, CreateView):
     model = Note
     success_url = '/secret/notes/'
