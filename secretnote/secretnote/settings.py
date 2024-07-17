@@ -135,3 +135,10 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 LOGIN_REDIRECT_URL = '/'
 
 LOGOUT_REDIRECT_URL = '/'
+
+# CACHES = {
+#     'default': {},
+#     'cache-for-ratelimiting': {},
+# }
+
+# RATELIMIT_USE_CACHE = 'cache-for-ratelimiting'

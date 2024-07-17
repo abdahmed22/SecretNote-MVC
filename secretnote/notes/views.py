@@ -12,24 +12,27 @@ from django_ratelimit.decorators import ratelimit
 
 f = Fernet(settings.ENCRYPTION_KEY)
 
-@ratelimit(key='ip', rate='100/h')
+# @ratelimit(key='ip', rate='100/h')
 class NotesListView(LoginRequiredMixin, ListView):
     model = Note
+    template_name = 'notes/note_list.html'
     context_object_name = "notes"
     login_url = "/login"
     
     def get_queryset(self):
         return self.request.user.notes.all()
     
-@ratelimit(key='ip', rate='100/h')
+# @ratelimit(key='ip', rate='100/h')
 class NotesDetailsView(LoginRequiredMixin, DetailView):
     model = Note
+    template_name = 'notes/note_detail.html'
     context_object_name = "note"
     login_url = "/login"
 
-@ratelimit(key='ip', rate='100/h') 
+# @ratelimit(key='ip', rate='100/h') 
 class NotesCreateView(LoginRequiredMixin, CreateView):
     model = Note
+    template_name = 'notes/note_form.html'
     success_url = '/secret/notes/'
     form_class = NoteForm
     login_url = "/login"
@@ -64,9 +67,10 @@ class NotesCreateView(LoginRequiredMixin, CreateView):
         
         return HttpResponseRedirect(self.get_success_url())
     
-@ratelimit(key='ip', rate='100/h')   
+# @ratelimit(key='ip', rate='100/h')   
 class NotesUpdateView(LoginRequiredMixin, UpdateView):
     model = Note
+    template_name = 'notes/note_form.html'
     success_url = '/secret/notes/'
     form_class = NoteForm
     login_url = "/login"
@@ -74,7 +78,7 @@ class NotesUpdateView(LoginRequiredMixin, UpdateView):
     def get_queryset(self):
         return self.request.user.notes.all()
  
-@ratelimit(key='ip', rate='100/h')   
+# @ratelimit(key='ip', rate='100/h')   
 class NotesDeleteView(LoginRequiredMixin, DeleteView):
     model = Note
     success_url = '/secret/notes/'

@@ -7,7 +7,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.shortcuts import redirect
 from django_ratelimit.decorators import ratelimit
 
-@ratelimit(key='ip', rate='100/h')
+# @ratelimit(key='ip', rate='100/h')
 class SignUpInterfaceView(CreateView):
     template_name = 'home/signup.html'
     form_class = UserCreationForm
@@ -18,15 +18,15 @@ class SignUpInterfaceView(CreateView):
             return redirect('/')
         return super().get(request,*args, **kwargs)
     
-@ratelimit(key='ip', rate='100/h')   
+# @ratelimit(key='ip', rate='100/h')   
 class LoginInterfaceView(LoginView):
     template_name = 'home/login.html'
     
-@ratelimit(key='ip', rate='100/h')    
+# @ratelimit(key='ip', rate='100/h')    
 class LogoutInterfaceView(TemplateView):
     template_name = 'home/logout.html'
     
-@ratelimit(key='ip', rate='100/h') 
+# @ratelimit(key='ip', rate='100/h') 
 class HomeView(TemplateView):
     template_name = 'home/welcome.html'
 
