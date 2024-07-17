@@ -23,6 +23,18 @@
                                     </div>
                                 </div>
                             </div>
+                        {% else %}
+                        <div class="col-md-4">
+                            <div class="card mb-5">
+                                <div class="card-header">Expired Note</div>
+                                <div class="card-body">
+                                    <p>{{note.text|truncatechars:30}}</p>
+                                </div>
+                                <div class="card-footer">
+                                    <a href="{% url 'notes.new' %}" class="btn btn-success btn-sm">Create New Note</a>
+                                </div>
+                            </div>
+                        </div>
                         {% endif %}
                     {% endfor %}
                 </div>

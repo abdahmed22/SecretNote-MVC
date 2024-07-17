@@ -6,6 +6,7 @@
 <div class="row justify-content-center">
     <div class="col-md-6">
         <div class="card mt-5">
+            {% if not note.is_deleted %}
             <div class="card-header">Note Details</div>
             <div class="card-body">
                 <h1>{{note.title_decrypted}}</h1>
@@ -17,6 +18,16 @@
                 <a href="{% url 'notes.update' pk=note.secret %}" class="btn btn-success btn-sm">Edit</a>
                 <a href="{% url 'notes.list' %}" class="btn btn-success btn-sm">Back</a>
             </div>
+            {% else %}
+            <div class="card-header">Expired Note</div>
+            <div class="card-body">
+                <p>{{note.text}}</p>
+            </div>
+            <div class="card-footer">
+                <a href="{% url 'notes.new' %}" class="btn btn-success btn-sm">Create New Note</a>
+                <a href="{% url 'notes.list' %}" class="btn btn-success btn-sm">Back</a>
+            </div>
+            {% endif %}
         </div>
     </div>
 </div>
