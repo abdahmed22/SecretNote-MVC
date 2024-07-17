@@ -8,9 +8,11 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.http import HttpResponseRedirect
 from cryptography.fernet import Fernet
 from django.conf import settings
+from django_ratelimit.decorators import ratelimit
 
 f = Fernet(settings.ENCRYPTION_KEY)
 
+@ratelimit(key='ip', rate='100/h')
 class NotesListView(LoginRequiredMixin, ListView):
     model = Note
     context_object_name = "notes"
@@ -19,12 +21,13 @@ class NotesListView(LoginRequiredMixin, ListView):
     def get_queryset(self):
         return self.request.user.notes.all()
     
-    
+@ratelimit(key='ip', rate='100/h')
 class NotesDetailsView(LoginRequiredMixin, DetailView):
     model = Note
     context_object_name = "note"
     login_url = "/login"
-    
+
+@ratelimit(key='ip', rate='100/h') 
 class NotesCreateView(LoginRequiredMixin, CreateView):
     model = Note
     success_url = '/secret/notes/'
@@ -61,7 +64,7 @@ class NotesCreateView(LoginRequiredMixin, CreateView):
         
         return HttpResponseRedirect(self.get_success_url())
     
-    
+@ratelimit(key='ip', rate='100/h')   
 class NotesUpdateView(LoginRequiredMixin, UpdateView):
     model = Note
     success_url = '/secret/notes/'
@@ -70,7 +73,8 @@ class NotesUpdateView(LoginRequiredMixin, UpdateView):
     
     def get_queryset(self):
         return self.request.user.notes.all()
-    
+ 
+@ratelimit(key='ip', rate='100/h')   
 class NotesDeleteView(LoginRequiredMixin, DeleteView):
     model = Note
     success_url = '/secret/notes/'
