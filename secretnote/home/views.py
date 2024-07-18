@@ -21,11 +21,7 @@ class SignUpInterfaceView(CreateView):
 # @ratelimit(key='ip', rate='100/h')   
 class LoginInterfaceView(LoginView):
     template_name = 'home/login.html'
-    
-# @ratelimit(key='ip', rate='100/h')    
-class LogoutInterfaceView(TemplateView):
-    template_name = 'home/logout.html'
-    
+        
 # @ratelimit(key='ip', rate='100/h') 
 class HomeView(TemplateView):
     template_name = 'home/welcome.html'

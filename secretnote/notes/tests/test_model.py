@@ -9,7 +9,7 @@ class TestModel(TestCase):
     def setUp(self):
         self.user1 = User.objects.create(
             username = 'testuser',
-            password = 'testuserPassword111'
+            password = 'password'
         )
         self.note1 = Note.objects.create(
             title = 'secret note 1',
