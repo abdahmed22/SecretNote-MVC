@@ -6,11 +6,11 @@
 
     <div class="row">
         <div class="col">
-            <div class="home-holder text-center ">
+            <div id='home' class="home-holder text-center ">
                 <h1 class="fs-3 mb-5">Secret Notes</h1>
                 <p>Welcome to secret notes!</p>
                 <p>Create and securely share self-destructing secret notes.</p>
-                <a href="{% url 'notes.new' %}" class="btn btn-success btn-sm">Create Note</a>
+                <a id="create_button" href="{% url 'notes.new' %}" class="btn btn-success btn-sm">Create Note</a>
                 <a href="{% url 'notes.list' %}" class="btn btn-success btn-sm">My Notes</a>
             </div>
         </div>

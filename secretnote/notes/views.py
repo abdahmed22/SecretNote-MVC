@@ -8,7 +8,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.http import HttpResponseRedirect
 from cryptography.fernet import Fernet
 from django.conf import settings
-from django_ratelimit.decorators import ratelimit
+
 
 f = Fernet(settings.ENCRYPTION_KEY)
 

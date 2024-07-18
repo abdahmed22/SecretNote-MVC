@@ -5,7 +5,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.views import LoginView, LogoutView
 from django.contrib.auth.forms import UserCreationForm
 from django.shortcuts import redirect
-from django_ratelimit.decorators import ratelimit
+
 
 # @ratelimit(key='ip', rate='100/h')
 class SignUpInterfaceView(CreateView):

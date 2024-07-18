@@ -5,12 +5,12 @@
 
 <div class="row justify-content-center">
     <div class="col-md-6">
-        <div class="card mt-5">
+        <div id='note_detail' class="card mt-5">
             {% if not note.is_deleted %}
             <div class="card-header">Note Details</div>
             <div class="card-body">
-                <h1>{{note.title_decrypted}}</h1>
-                <p>{{note.text_decrypted}}</p>
+                <h1 id='title'>{{note.title_decrypted}}</h1>
+                <p id='text'>{{note.text_decrypted}}</p>
                 <h5>Created at: {{note.created}}</h5>
             </div>
             <div class="card-footer">
