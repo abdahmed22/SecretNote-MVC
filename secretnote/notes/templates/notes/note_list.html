@@ -1,49 +1,46 @@
 {% extends 'base.html' %}
 {% load static %}
-  
+
 {% block content %}
-
-
-<div class="row justify-content-center">
+  <div class="row justify-content-center">
     <div class="col-md-6">
-        <div id='note_list' class="card mt-2">
-            <div class="card-header">These are all the secret notes</div>
-            <div class="card-body">
-                <div class="row">
-                    {% for note in notes %}
-                        {% if not note.is_deleted%}
-                            <div class="col-md-4">
-                                <div class="card mb-5">
-                                    <div class="card-header">{{note.title_decrypted}}</div>
-                                    <div class="card-body">
-                                        <p>{{note.text_decrypted|truncatechars:30}}</p>
-                                    </div>
-                                    <div class="card-footer">
-                                        <a id='view_button' href="{% url 'notes.detail' pk=note.secret %}" class="btn btn-success btn-sm">View</a>
-                                    </div>
-                                </div>
-                            </div>
-                        {% else %}
-                        <div class="col-md-4">
-                            <div class="card mb-5">
-                                <div class="card-header">Expired Note</div>
-                                <div class="card-body">
-                                    <p>{{note.text|truncatechars:30}}</p>
-                                </div>
-                                <div class="card-footer">
-                                    <a href="{% url 'notes.new' %}" class="btn btn-success btn-sm">Create New Note</a>
-                                </div>
-                            </div>
-                        </div>
-                        {% endif %}
-                    {% endfor %}
+      <div id="note_list" class="card mt-2">
+        <div class="card-header">These are all the secret notes</div>
+        <div class="card-body">
+          <div class="row">
+            {% for note in notes %}
+              {% if not note.is_deleted %}
+                <div class="col-md-4">
+                  <div class="card mb-5">
+                    <div class="card-header">{{ note.title_decrypted }}</div>
+                    <div class="card-body">
+                      <p>{{ note.text_decrypted|truncatechars:30 }}</p>
+                    </div>
+                    <div class="card-footer">
+                      <a id="view_button" href="{% url 'notes.detail' pk=note.secret %}" class="btn btn-success btn-sm">View</a>
+                    </div>
+                  </div>
                 </div>
-            </div>
-            <div class="card-footer">
-                <a href="{% url 'home' %}" class="btn btn-success btn-sm">Back</a>
-            </div>
+              {% else %}
+                <div class="col-md-4">
+                  <div class="card mb-5">
+                    <div class="card-header">Expired Note</div>
+                    <div class="card-body">
+                      <p>{{ note.text|truncatechars:30 }}</p>
+                    </div>
+                    <div class="card-footer">
+                      <a href="{% url 'notes.new' %}" class="btn btn-success btn-sm">Create New Note</a>
+                    </div>
+                  </div>
+                </div>
+              {% endif %}
+            {% endfor %}
+          </div>
         </div>
+        <div class="card-footer">
+          <a href="{% url 'home' %}" class="btn btn-success btn-sm">Back</a>
+        </div>
+      </div>
     </div>
-</div>
-
-{% endblock content %}
+  </div>
+{% endblock %}

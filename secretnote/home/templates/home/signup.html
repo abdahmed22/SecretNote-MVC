@@ -1,24 +1,21 @@
 {% extends 'base.html' %}
 {% load static %}
-  
+
 {% block content %}
-
-<div class="row justify-content-center">
+  <div class="row justify-content-center">
     <div class="col-md-6">
-        <form id="signup_form" action="" method="post">
-            <div class="card mt-5">
-                <div class="card-header">Create a new user</div>
-                <div class="card-body">
-                    {% csrf_token %}
-                    {{form.as_p}}
-                </div>
-                <div class="card-footer">
-                    <input id="signup_submit" type="submit" class="btn btn-sm btn-success" value="Sign Up">
-                </div>
-            </div>
-        </form>
+      <form id="signup_form" action="" method="post">
+        <div class="card mt-5">
+          <div class="card-header">Create a new user</div>
+          <div class="card-body">
+            {% csrf_token %}
+            {{ form.as_p }}
+          </div>
+          <div class="card-footer">
+            <input id="signup_submit" type="submit" class="btn btn-sm btn-success" value="Sign Up" />
+          </div>
+        </div>
+      </form>
     </div>
-</div>
-
-
-{% endblock content %}
+  </div>
+{% endblock %}

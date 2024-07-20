@@ -1,21 +1,19 @@
 {% extends 'base.html' %}
 {% load static %}
-  
+
 {% block content %}
-
-<div class="row justify-content-center">
+  <div class="row justify-content-center">
     <div class="col-md-6">
-        <form action="{% url 'postlogout' %}" method="post">
-            <div class="card mt-5">
-                <div class="card-header">Thanks for using Secret Notes !!</div>
-                <div class="card-body">
-                    {% csrf_token %}
-                    <input type="submit" class="btn btn-sm btn-danger" value="Logout">
-                    <a href="{% url 'home' %}" class="btn btn-success btn-sm">Back</a>
-                </div>
-            </div>
-        </form>
+      <form action="{% url 'postlogout' %}" method="post">
+        <div class="card mt-5">
+          <div class="card-header">Thanks for using Secret Notes !!</div>
+          <div class="card-body">
+            {% csrf_token %}
+            <input type="submit" class="btn btn-sm btn-danger" value="Logout" />
+            <a href="{% url 'home' %}" class="btn btn-success btn-sm">Back</a>
+          </div>
+        </div>
+      </form>
     </div>
-</div>
-
-{% endblock content %} 
+  </div>
+{% endblock %}

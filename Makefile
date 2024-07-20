@@ -9,6 +9,10 @@ run_sever: install_requirements
 run_tests:
 	python manage.py test
 
+run_lint:
+	pip install pylint
+	pylint ./secretnote
+
 build_image:
 	docker build --tag=buildme-secretnote:v5.0 --target=base .
 
