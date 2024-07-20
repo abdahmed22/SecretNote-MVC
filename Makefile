@@ -7,7 +7,9 @@ run_sever: install_requirements
 	python3 secretnote/manage.py runserver
 
 run_tests:
-	python manage.py test
+	python3 secretnote/manage.py test e2etests
+	python3 secretnote/manage.py test home
+	python3 secretnote/manage.py test notes
 
 run_lint:
 	pip install pylint
